@@ -28,6 +28,6 @@ namespace Grammophone.IPLocation.MaxMind
 		/// <summary>
 		/// Create a <see cref="DatabaseMaxMindLocationProvider"/> based on the given parameters.
 		/// </summary>
-		public ILocationProvider CreateLocationProvider() => throw new NotImplementedException();
+		public ILocationProvider CreateLocationProvider() => new DatabaseMaxMindLocationProvider(this.DatabaseFilename);
 	}
 }
