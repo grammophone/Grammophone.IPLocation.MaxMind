@@ -57,7 +57,7 @@ using (var locationCache = new LocationCache(memoryCacheOptions, aggregateLocati
 {
   var firstLocation = await locationCache.GetLocationAsync(IPAddress.Parse("[some IP address]"));
 
-  var secondLocation = await locationCache.GetLocationAsync(IPAddress.Parse("[the same IP address]"));
+  var secondLocation = await locationCache.GetLocationAsync(IPAddress.Parse("[same IP address]"));
 
   Assert.AreEqual(firstLocation, secondLocation);
 }
