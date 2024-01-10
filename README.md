@@ -33,7 +33,7 @@ using (var locationProvider = new WebServiceMaxMindLocationProvider(123456, "[yo
 ```
 
 ## Caching and aggregating
-Here is an example that uses caching and aggregating location providers to first try web API querying then falling back to database query if the former fails.
+Here is an example that uses caching and aggregating location providers to first try web API querying then falling back to database querying if the former fails.
 The caching capability is provided by the [Grammophone.IPLocation.Caching](https://github.com/grammophone/Grammophone.IPLocation.Caching) library
 which should also be present in a sibling directory along the [Grammophone.IPLocation](https://github.com/grammophone/Grammophone.IPLocation) library.
 ```CS
