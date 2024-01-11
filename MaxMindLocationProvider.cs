@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -112,6 +114,13 @@ namespace Grammophone.IPLocation.MaxMind
 				}
 			}
 
+			var subdivisions = (from s in cityResponse.Subdivisions
+												 select new Subdivision
+												 {
+													 Name = s.Name,
+													 IsoCide = s.IsoCode
+												 }).ToList();
+
 			var location = new Location
 			{
 				City = city,
@@ -121,6 +130,7 @@ namespace Grammophone.IPLocation.MaxMind
 				TimeZone = cityResponse.Location?.TimeZone,
 				ProviderName = this.ProviderName,
 				Timestamp = DateTime.UtcNow,
+				Subdivisions = subdivisions,
 				Response = JsonSerializer.Serialize(cityResponse, jsonSerializationOptions)
 			};
 
