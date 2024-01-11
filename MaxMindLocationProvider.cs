@@ -114,12 +114,12 @@ namespace Grammophone.IPLocation.MaxMind
 				}
 			}
 
-			var subdivisions = (from s in cityResponse.Subdivisions
+			var subdivisions = from s in cityResponse.Subdivisions
 												 select new Subdivision
 												 {
 													 Name = s.Name,
-													 IsoCide = s.IsoCode
-												 }).ToList();
+													 IsoCode = s.IsoCode
+												 };
 
 			var location = new Location
 			{
@@ -130,7 +130,7 @@ namespace Grammophone.IPLocation.MaxMind
 				TimeZone = cityResponse.Location?.TimeZone,
 				ProviderName = this.ProviderName,
 				Timestamp = DateTime.UtcNow,
-				Subdivisions = subdivisions,
+				Subdivisions = subdivisions.ToList(),
 				Response = JsonSerializer.Serialize(cityResponse, jsonSerializationOptions)
 			};
 
